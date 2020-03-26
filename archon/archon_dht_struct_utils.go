@@ -35,7 +35,7 @@ func (a ArchonDHTs) updateSPProfileCaches() {
 
 // Each service provider "puts" the key:value pair nodeID:url into the dht
 // so that uploaders will have a url to upload data to after the marketplace
-// resolves the assignment of an upload to an sp
+// resolves the assignment of an upload's shards to sps
 func (a ArchonDHTs) pollAnnounceUrl(interval time.Duration) {
 	go func(i time.Duration, arc ArchonDHTs) {
 		for {
