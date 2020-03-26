@@ -13,7 +13,7 @@ import (
 
 	mh "github.com/multiformats/go-multihash"
 
-	permLayer "github.com/itsmeknt/archoncloud-go/networking/archon-dht/permission_layer"
+	permLayer "github.com/archoncloud/archon-dht/permission_layer"
 )
 
 type ArchonValidator struct {

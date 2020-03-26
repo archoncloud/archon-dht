@@ -7,7 +7,8 @@ import (
 	mrand "math/rand"
 	"sync"
 
-	"github.com/itsmeknt/archoncloud-go/common"
+	"github.com/archoncloud/archoncloud-go/common"
+
 	"github.com/libp2p/go-libp2p-core/crypto"
 )
 
