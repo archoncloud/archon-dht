@@ -9,8 +9,8 @@ import (
 
 	"github.com/ipfs/go-cid"
 
-	permLayer "github.com/archon/archon-dht/permission_layer"
-	"github.com/archon/archoncloud-go/common"
+	permLayer "github.com/archoncloud/archon-dht/permission_layer"
+	"github.com/archoncloud/archoncloud-go/common"
 
 	"github.com/libp2p/go-libp2p-core/peer"
 	mh "github.com/multiformats/go-multihash"
