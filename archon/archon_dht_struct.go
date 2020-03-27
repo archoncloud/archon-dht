@@ -9,14 +9,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/itsmeknt/archoncloud-go/common"
+	"github.com/archoncloud/archoncloud-go/common"
 
 	"github.com/ipfs/go-cid"
 
-	. "github.com/itsmeknt/archoncloud-go/blockchainAPI/registered_sp"
-	permLayer "github.com/itsmeknt/archoncloud-go/networking/archon-dht/permission_layer"
-
-	dht "github.com/itsmeknt/archoncloud-go/networking/archon-dht/mods/kad-dht-mod"
+	dht "github.com/archoncloud/archon-dht/mods/kad-dht-mod"
+	permLayer "github.com/archoncloud/archon-dht/permission_layer"
+	. "github.com/archoncloud/archoncloud-go/blockchainAPI/registered_sp"
 
 	"github.com/libp2p/go-libp2p-core/peer"
 	rhost "github.com/libp2p/go-libp2p/p2p/host/routed"
