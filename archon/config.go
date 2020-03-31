@@ -1,8 +1,8 @@
 package archon_dht
 
 import (
-	"github.com/archon/archoncloud-go/interfaces"
 	permLayer "github.com/archoncloud/archon-dht/permission_layer"
+	"github.com/archoncloud/archoncloud-go/interfaces"
 	"github.com/pariz/gountries"
 )
 
