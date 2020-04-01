@@ -11,8 +11,9 @@ func NewPermissionLayer(sid string) permLayer.PermissionLayer {
 	switch id {
 	case permLayer.EthPermissionId:
 		return Ethereum{}
-	case permLayer.NeoPermissionId:
-		return Neo{}
+	/*case permLayer.NeoPermissionId:
+	return Neo{}*/
+	// waiting for archoncloud-neo module to be publicly available
 	case permLayer.NotPermissionId:
 		return NonPermissioned{}
 	default:
