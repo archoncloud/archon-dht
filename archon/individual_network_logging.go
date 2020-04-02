@@ -32,7 +32,6 @@ func PollReportConnectionsToNetwork(host rhost.RoutedHost, config DHTConnectionC
 	clUrl = "https://" + clUrl + "/centralLogging"
 	report := new(ReportConnectionsLog)
 	report.NodeId = host.ID()
-	var address []byte
 	report.PermLayerID = config.PermissionLayer.ID()
 	report.CountryCode = config.CountryCode
 	for {
