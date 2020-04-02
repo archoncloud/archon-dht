@@ -27,14 +27,6 @@ var neo_blockTime time.Duration = time.Duration(30) // minutes
 
 const cacheFilepath_NEO string = ".sp_profiles_cache/" + string(permLayer.NeoPermissionId) + "/"
 
-func BCAddressToNEOAddress(address BCAddress) string {
-	return string(address)
-}
-
-func NEOAddressToBCAddress(address string) BCAddress {
-	return BCAddress(address)
-}
-
 var validationInProgress_NEO = struct {
 	sync.RWMutex
 	m map[peer.ID]bool
@@ -42,8 +34,8 @@ var validationInProgress_NEO = struct {
 
 var peerID2NEOAddrs = struct {
 	sync.RWMutex
-	m map[peer.ID]BCAddress
-}{m: make(map[peer.ID]BCAddress)}
+	m map[peer.ID]string
+}{m: make(map[peer.ID]string)}
 
 var inPeerstoreMap_NEO = struct {
 	sync.RWMutex
@@ -183,7 +175,7 @@ func (n Neo) UpdateIndividualSPProfileCache(pid peer.ID) {
 	var spAddress string
 	neoAddress, ok := peerID2NEOAddrs.m[pid]
 	if ok {
-		spAddress = BCAddressToNEOAddress(neoAddress)
+		spAddress = neoAddress
 	} else {
 		// if dont have neo address
 		neoAddress, err := client_utils.GetNodeID2Address(pid.Pretty())
@@ -199,19 +191,19 @@ func (n Neo) UpdateIndividualSPProfileCache(pid peer.ID) {
 		if isAllZeros {
 			return
 		}
-		inGoodStanding := n.IsSpRegistered(BCAddressToNEOAddress(neoAddress))
+		inGoodStanding := n.IsSpRegistered(neoAddress)
 		if !inGoodStanding {
 			return
 		}
 		if peerID2NEOAddrs.m == nil {
-			peerID2NEOAddrs.m = make(map[peer.ID]BCAddress)
+			peerID2NEOAddrs.m = make(map[peer.ID]string)
 		}
 		peerID2NEOAddrs.m[pid] = neoAddress
-		spAddress = BCAddressToNEOAddress(neoAddress)
+		spAddress = neoAddress
 	}
 	peerID2NEOAddrs.Unlock()
 	// get spprofile
-	sp, err := client_utils.GetRegisteredSP(NEOAddressToBCAddress(spAddress))
+	sp, err := client_utils.GetRegisteredSP(spAddress)
 	if err != nil {
 		common.LogError.Println("UpdateSPProfileCache() error: ", pid, err)
 	}

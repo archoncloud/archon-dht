@@ -27,7 +27,7 @@ func ValidatePeerIDNEO(bootstrapPeer peer.ID) (ret bool, err error) {
 	}
 	peerID2NEOAddrs.Lock()
 	if peerID2NEOAddrs.m == nil {
-		peerID2NEOAddrs.m = make(map[peer.ID]BCAddress)
+		peerID2NEOAddrs.m = make(map[peer.ID]string)
 	}
 	peerID2NEOAddrs.m[bootstrapPeer] = neoAddress
 	peerID2NEOAddrs.Unlock()
