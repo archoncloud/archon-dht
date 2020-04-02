@@ -19,8 +19,8 @@ import (
 	"github.com/archoncloud/archoncloud-ethereum/register"
 	"github.com/archoncloud/archoncloud-ethereum/rpc_utils"
 
+	"github.com/archoncloud/archon-dht/common"
 	. "github.com/archoncloud/archoncloud-go/blockchainAPI/registered_sp"
-	"github.com/archoncloud/archoncloud-go/common"
 
 	permLayer "github.com/archoncloud/archon-dht/permission_layer"
 )

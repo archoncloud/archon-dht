@@ -8,8 +8,6 @@ package dht_permission_layers
 
 "github.com/archoncloud/archoncloud-neo/client_utils"
 
-"github.com/archoncloud/archoncloud-go/common"
-
 "github.com/libp2p/go-libp2p-core/peer"*/
 
 // NEO

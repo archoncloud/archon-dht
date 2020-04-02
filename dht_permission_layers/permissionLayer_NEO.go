@@ -14,7 +14,7 @@ package dht_permission_layers
 "github.com/archoncloud/archoncloud-neo/client_utils"
 
 . "github.com/archoncloud/archoncloud-go/blockchainAPI/registered_sp"
-"github.com/archoncloud/archoncloud-go/common"
+"github.com/archoncloud/archon-dht/common"
 
 permLayer "github.com/archoncloud/archon-dht/permission_layer"*/
 
