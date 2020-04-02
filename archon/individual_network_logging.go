@@ -8,6 +8,8 @@ import (
 
 	"github.com/archoncloud/archoncloud-go/common"
 
+	permLayer "github.com/archoncloud/archon-dht/permission_layer"
+
 	"github.com/libp2p/go-libp2p-core/peer"
 	rhost "github.com/libp2p/go-libp2p/p2p/host/routed"
 
@@ -15,10 +17,10 @@ import (
 )
 
 type ReportConnectionsLog struct {
+	PermLayerID   permLayer.PermissionLayerID
 	NodeId        peer.ID         `json: "nodeid`         // type will be specific to the id of the host
 	ConnectionIds []peer.ID       `json: "connectionids"` // type will be specific to the ids of connections
 	Time          time.Time       `json: "time"`
-	Address       []byte          `json: "address"` // permission layer address
 	CountryCode   gountries.Codes `json: countrycode`
 }
 
@@ -32,10 +34,7 @@ func PollReportConnectionsToNetwork(host rhost.RoutedHost, config DHTConnectionC
 	report := new(ReportConnectionsLog)
 	report.NodeId = host.ID()
 	var address []byte
-	if config.Account != nil {
-		address = append(address, config.Account.AddressBytes()...)
-	}
-	report.Address = append(report.Address, address...)
+	report.PermLayerID = config.PermissionLayer.ID()
 	report.CountryCode = config.CountryCode
 	for {
 		// construct ReportConnectionsLog logData
