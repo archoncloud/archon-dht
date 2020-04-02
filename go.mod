@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/archoncloud/archoncloud-ethereum v0.0.15
-	github.com/archoncloud/archoncloud-go v0.0.5
+	github.com/archoncloud/archoncloud-go v0.0.7
 	github.com/dustin/go-humanize v1.0.0
 	github.com/ethereum/go-ethereum v1.9.12
 	github.com/gogo/protobuf v1.3.1
