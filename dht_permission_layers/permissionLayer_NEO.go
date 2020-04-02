@@ -283,19 +283,19 @@ func (n Neo) CompareBlockHeights(lhs, rhs permLayer.VersionData) (int, error) {
 }
 
 func (n Neo) GetBlockHeight() (string, error) {
-	return n.GetBlockHeight()
+	return neo.GetBlockHeight()
 }
 
 func (n Neo) GetBlockHash(blockHeight string) (string, error) {
-	return n.GetBlockHash(blockHeight)
+	return neo.GetBlockHash(blockHeight)
 }
 
 func (n Neo) NewVersionData() (v *permLayer.VersionData, err error) {
-	height, err := n.GetBlockHeight()
+	height, err := neo.GetBlockHeight()
 	if err != nil {
 		return
 	}
-	hash, err := n.GetBlockHash(height)
+	hash, err := neo.GetBlockHash(height)
 	if err != nil {
 		return
 	}
