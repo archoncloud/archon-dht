@@ -1,25 +1,26 @@
 package dht_permission_layers
 
-// TODO UNCOMMENT WHEN archoncloud-neo is available
-/*"encoding/json"
-"io/ioutil"
-"os"
-"path"
-"path/filepath"
-"sync"
-"time"
+import (
+	"encoding/json"
+	"io/ioutil"
+	"os"
+	"path"
+	"path/filepath"
+	"sync"
+	"time"
 
-"github.com/libp2p/go-libp2p-core/peer"
+	"github.com/libp2p/go-libp2p-core/peer"
 
-"github.com/archoncloud/archoncloud-neo/client_utils"
+	"github.com/archoncloud/archoncloud-go/blockchainAPI/neo/client_utils"
+	. "github.com/archoncloud/archoncloud-go/blockchainAPI/registered_sp"
 
-. "github.com/archoncloud/archoncloud-go/blockchainAPI/registered_sp"
-"github.com/archoncloud/archon-dht/common"
+	"github.com/archoncloud/archon-dht/common"
 
-permLayer "github.com/archoncloud/archon-dht/permission_layer"*/
+	permLayer "github.com/archoncloud/archon-dht/permission_layer"
+)
 
 // NEO
-/*
+
 var neo_blockTime time.Duration = time.Duration(30) // minutes
 // FIXME after beta this needs to be the actual neo blocktime
 
@@ -310,6 +311,6 @@ func (n Neo) NewVersionData() (v *permLayer.VersionData, err error) {
 		BlockHash:   hash,
 	}
 	return
-}*/
+}
 
 // END NEO

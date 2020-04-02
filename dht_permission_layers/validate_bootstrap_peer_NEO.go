@@ -1,17 +1,18 @@
 package dht_permission_layers
 
-// TODO UNCOMMENT WHEN archoncloud-neo is available
-/*"fmt"
-"strings"
-"sync"
-"time"
+import (
+	"fmt"
+	"strings"
+	"sync"
+	"time"
 
-"github.com/archoncloud/archoncloud-neo/client_utils"
+	"github.com/archoncloud/archoncloud-go/blockchainAPI/neo/client_utils"
 
-"github.com/libp2p/go-libp2p-core/peer"*/
+	"github.com/libp2p/go-libp2p-core/peer"
+)
 
 // NEO
-/*
+
 func ValidatePeerIDNEO(bootstrapPeer peer.ID) (ret bool, err error) {
 	var dummy bool = false
 	validationInProgress_NEO.Lock()
@@ -133,4 +134,4 @@ func ValidateBootstrapPeersNEO(bootstrapPeers []peer.AddrInfo, timeout time.Dura
 		return retVal, retNotVal, retErr
 	}
 	return retVal, retNotVal, nil
-}*/
+}
