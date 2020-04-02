@@ -22,6 +22,7 @@ import (
 // NEO
 
 var neo_blockTime time.Duration = time.Duration(30) // minutes
+
 // FIXME after beta this needs to be the actual neo blocktime
 
 const cacheFilepath_NEO string = ".sp_profiles_cache/" + string(permLayer.NeoPermissionId) + "/"
@@ -290,11 +291,11 @@ func (n Neo) CompareBlockHeights(lhs, rhs permLayer.VersionData) (int, error) {
 }
 
 func (n Neo) GetBlockHeight() (string, error) {
-	return neo.GetBlockHeight()
+	return n.GetBlockHeight()
 }
 
 func (n Neo) GetBlockHash(blockHeight string) (string, error) {
-	return neo.GetBlockHash(blockHeight)
+	return n.GetBlockHash(blockHeight)
 }
 
 func (n Neo) NewVersionData() (v *permLayer.VersionData, err error) {
