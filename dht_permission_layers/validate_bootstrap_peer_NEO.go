@@ -1,18 +1,16 @@
 package dht_permission_layers
 
-import (
-	// TODO UNCOMMENT WHEN archoncloud-neo is available
-	/*"fmt"
-	"strings"
-	"sync"
-	"time"
+// TODO UNCOMMENT WHEN archoncloud-neo is available
+/*"fmt"
+"strings"
+"sync"
+"time"
 
-	"github.com/archoncloud/archoncloud-neo/client_utils"
+"github.com/archoncloud/archoncloud-neo/client_utils"
 
-	"github.com/archoncloud/archoncloud-go/common"
+"github.com/archoncloud/archoncloud-go/common"
 
-	"github.com/libp2p/go-libp2p-core/peer"*/
-)
+"github.com/libp2p/go-libp2p-core/peer"*/
 
 // NEO
 /*
@@ -30,7 +28,7 @@ func ValidatePeerIDNEO(bootstrapPeer peer.ID) (ret bool, err error) {
 	}
 	peerID2NEOAddrs.Lock()
 	if peerID2NEOAddrs.m == nil {
-		peerID2NEOAddrs.m = make(map[peer.ID]common.BCAddress)
+		peerID2NEOAddrs.m = make(map[peer.ID]BCAddress)
 	}
 	peerID2NEOAddrs.m[bootstrapPeer] = neoAddress
 	peerID2NEOAddrs.Unlock()

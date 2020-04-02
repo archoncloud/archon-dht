@@ -32,7 +32,7 @@ var eth_blockTime time.Duration = time.Duration(30) // minutes
 
 const cacheFilepath_ETH string = ".sp_profiles_cache/" + string(permLayer.EthPermissionId) + "/"
 
-func BCAddressToEthAddress(address common.BCAddress) [20]byte {
+func BCAddressToEthAddress(address BCAddress) [20]byte {
 	var bAddress []byte
 	sAddress := string(address)
 	for i := 0; i < len(address); i += 2 {
@@ -44,12 +44,12 @@ func BCAddressToEthAddress(address common.BCAddress) [20]byte {
 	return b20Address
 }
 
-func EthAddressToBCAddress(address [20]byte) common.BCAddress {
+func EthAddressToBCAddress(address [20]byte) BCAddress {
 	var bAddress []byte
 	bAddress = make([]byte, 20)
 	copy(bAddress[0:len(address)], address[0:len(address)])
 	hexAddress := hexutil.Encode(bAddress)
-	ret := common.BCAddress(hexAddress)
+	ret := BCAddress(hexAddress)
 	return ret
 }
 
@@ -60,8 +60,8 @@ var validationInProgress_ETH = struct {
 
 var peerID2ETHAddrs = struct {
 	sync.RWMutex
-	m map[peer.ID]common.BCAddress
-}{m: make(map[peer.ID]common.BCAddress)}
+	m map[peer.ID]BCAddress
+}{m: make(map[peer.ID]BCAddress)}
 
 var inPeerstoreMap_ETH = struct {
 	sync.RWMutex
@@ -226,7 +226,7 @@ func (e Ethereum) UpdateIndividualSPProfileCache(pid peer.ID) {
 			return
 		}
 		if peerID2ETHAddrs.m == nil {
-			peerID2ETHAddrs.m = make(map[peer.ID]common.BCAddress)
+			peerID2ETHAddrs.m = make(map[peer.ID]BCAddress)
 		}
 		peerID2ETHAddrs.m[pid] = EthAddressToBCAddress(ethAddress)
 		spAddress = ethAddress

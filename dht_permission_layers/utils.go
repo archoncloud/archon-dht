@@ -24,3 +24,5 @@ func NewPermissionLayer(sid string) permLayer.PermissionLayer {
 type VersionData permLayer.VersionData
 
 var SpFilenames = permLayer.SpFilenames
+
+type BCAddress string

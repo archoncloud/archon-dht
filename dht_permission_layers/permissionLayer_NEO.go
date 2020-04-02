@@ -1,24 +1,22 @@
 package dht_permission_layers
 
-import (
-	// TODO UNCOMMENT WHEN archoncloud-neo is available
-	/*"encoding/json"
-	"io/ioutil"
-	"os"
-	"path"
-	"path/filepath"
-	"sync"
-	"time"
+// TODO UNCOMMENT WHEN archoncloud-neo is available
+/*"encoding/json"
+"io/ioutil"
+"os"
+"path"
+"path/filepath"
+"sync"
+"time"
 
-	"github.com/libp2p/go-libp2p-core/peer"
+"github.com/libp2p/go-libp2p-core/peer"
 
-	"github.com/archoncloud/archoncloud-neo/client_utils"
+"github.com/archoncloud/archoncloud-neo/client_utils"
 
-	. "github.com/archoncloud/archoncloud-go/blockchainAPI/registered_sp"
-	"github.com/archoncloud/archoncloud-go/common"
+. "github.com/archoncloud/archoncloud-go/blockchainAPI/registered_sp"
+"github.com/archoncloud/archoncloud-go/common"
 
-	permLayer "github.com/archoncloud/archon-dht/permission_layer"*/
-)
+permLayer "github.com/archoncloud/archon-dht/permission_layer"*/
 
 // NEO
 /*
@@ -27,12 +25,12 @@ var neo_blockTime time.Duration = time.Duration(30) // minutes
 
 const cacheFilepath_NEO string = ".sp_profiles_cache/" + string(permLayer.NeoPermissionId) + "/"
 
-func BCAddressToNEOAddress(address common.BCAddress) string {
+func BCAddressToNEOAddress(address BCAddress) string {
 	return string(address)
 }
 
-func NEOAddressToBCAddress(address string) common.BCAddress {
-	return common.BCAddress(address)
+func NEOAddressToBCAddress(address string) BCAddress {
+	return BCAddress(address)
 }
 
 var validationInProgress_NEO = struct {
@@ -42,8 +40,8 @@ var validationInProgress_NEO = struct {
 
 var peerID2NEOAddrs = struct {
 	sync.RWMutex
-	m map[peer.ID]common.BCAddress
-}{m: make(map[peer.ID]common.BCAddress)}
+	m map[peer.ID]BCAddress
+}{m: make(map[peer.ID]BCAddress)}
 
 var inPeerstoreMap_NEO = struct {
 	sync.RWMutex
@@ -204,7 +202,7 @@ func (n Neo) UpdateIndividualSPProfileCache(pid peer.ID) {
 			return
 		}
 		if peerID2NEOAddrs.m == nil {
-			peerID2NEOAddrs.m = make(map[peer.ID]common.BCAddress)
+			peerID2NEOAddrs.m = make(map[peer.ID]BCAddress)
 		}
 		peerID2NEOAddrs.m[pid] = neoAddress
 		spAddress = BCAddressToNEOAddress(neoAddress)

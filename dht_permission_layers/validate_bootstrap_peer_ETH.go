@@ -9,8 +9,6 @@ import (
 	"github.com/archoncloud/archoncloud-ethereum/client_utils"
 	"github.com/archoncloud/archoncloud-ethereum/register"
 
-	"github.com/archoncloud/archoncloud-go/common"
-
 	"github.com/libp2p/go-libp2p-core/peer"
 )
 
@@ -49,7 +47,7 @@ func ValidatePeerIDETH(bootstrapPeer peer.ID) (ret bool, err error) {
 	}
 	peerID2ETHAddrs.Lock()
 	if peerID2ETHAddrs.m == nil {
-		peerID2ETHAddrs.m = make(map[peer.ID]common.BCAddress)
+		peerID2ETHAddrs.m = make(map[peer.ID]BCAddress)
 	}
 	peerID2ETHAddrs.m[bootstrapPeer] = EthAddressToBCAddress(ethAddress)
 	peerID2ETHAddrs.Unlock()
