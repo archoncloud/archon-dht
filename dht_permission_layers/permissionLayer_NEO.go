@@ -192,7 +192,7 @@ func (n Neo) UpdateIndividualSPProfileCache(pid peer.ID) {
 		if isAllZeros {
 			return
 		}
-		inGoodStanding := n.IsSpRegistered(neoAddress)
+		inGoodStanding := neo.IsSpRegistered(neoAddress)
 		if !inGoodStanding {
 			return
 		}
