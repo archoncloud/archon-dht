@@ -11,6 +11,7 @@ import (
 
 	"github.com/libp2p/go-libp2p-core/peer"
 
+	"github.com/archoncloud/archoncloud-go/blockchainAPI/neo"
 	"github.com/archoncloud/archoncloud-go/blockchainAPI/neo/client_utils"
 	. "github.com/archoncloud/archoncloud-go/blockchainAPI/registered_sp"
 
@@ -291,11 +292,11 @@ func (n Neo) GetBlockHash(blockHeight string) (string, error) {
 }
 
 func (n Neo) NewVersionData() (v *permLayer.VersionData, err error) {
-	height, err := neo.GetBlockHeight()
+	height, err := n.GetBlockHeight()
 	if err != nil {
 		return
 	}
-	hash, err := neo.GetBlockHash(height)
+	hash, err := n.GetBlockHash(height)
 	if err != nil {
 		return
 	}
