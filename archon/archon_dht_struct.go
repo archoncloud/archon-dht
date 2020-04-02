@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/archoncloud/archoncloud-go/common"
+	"github.com/archoncloud/archon-dht/common"
 
 	"github.com/ipfs/go-cid"
 

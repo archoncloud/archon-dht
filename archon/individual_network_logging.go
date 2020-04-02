@@ -6,8 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/archoncloud/archoncloud-go/common"
-
+	"github.com/archoncloud/archon-dht/common"
 	permLayer "github.com/archoncloud/archon-dht/permission_layer"
 
 	"github.com/libp2p/go-libp2p-core/peer"

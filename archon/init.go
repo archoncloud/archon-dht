@@ -5,11 +5,10 @@ import (
 	"strconv"
 	"time"
 
-	archonCommon "github.com/archoncloud/archoncloud-go/common"
-
 	"github.com/libp2p/go-libp2p-core/peer"
 	rhost "github.com/libp2p/go-libp2p/p2p/host/routed"
 
+	archonCommon "github.com/archoncloud/archon-dht/common"
 	dht "github.com/archoncloud/archon-dht/mods/kad-dht-mod"
 
 	golog "github.com/ipfs/go-log"
