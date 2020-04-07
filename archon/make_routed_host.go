@@ -16,7 +16,9 @@ import (
 
 	dht "github.com/archoncloud/archon-dht/mods/kad-dht-mod"
 
-	"github.com/archoncloud/archon-dht/mods/libp2p-mod"
+	archonSecio "github.com/archoncloud/archon-dht/mods/go-libp2p-secio-mod"
+
+	"github.com/libp2p/go-libp2p"
 
 	rhost "github.com/libp2p/go-libp2p/p2p/host/routed"
 )
@@ -60,19 +62,22 @@ func makeRoutedHost(config DHTConnectionConfig, bootstrapPeers []peer.AddrInfo) 
 		return addrs
 	}
 
+	archonSecurity := archonSecio.SetPermissionedSecureTransport(config.PermissionLayer.ID())
+
 	opts := []libp2p.Option{
 		libp2p.ListenAddrStrings("/ip4/0.0.0.0/tcp/" + port),
 		libp2p.Identity(priv),
 		libp2p.DefaultTransports,
 		libp2p.DefaultMuxers,
-		libp2p.DefaultSecurity,
+		libp2p.Security(archonSecio.ID, archonSecurity),
 		libp2p.AddrsFactory(addressFactory),
 		libp2p.NATPortMap(),
 	}
 
 	ctx := context.Background()
 	// note: we are using archon specific modified libp2p libraries
-	basicHost, err := libp2p.NewPermissioned(ctx, config.PermissionLayer, opts...)
+	basicHost, err := libp2p.New(ctx, opts...)
+	//basicHost, err := libp2p.NewPermissioned(ctx, config.PermissionLayer, opts...)
 	if err != nil {
 		return nil, nil, err
 	}

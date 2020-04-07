@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/archoncloud/archoncloud-ethereum v0.0.15
-	github.com/archoncloud/archoncloud-go v0.0.10
+	github.com/archoncloud/archoncloud-go v1.0.1
 	github.com/btcsuite/btcutil v0.0.0-20190425235716-9e5f4b9a998d
 	github.com/dustin/go-humanize v1.0.0
 	github.com/ethereum/go-ethereum v1.9.12
@@ -23,7 +23,6 @@ require (
 	github.com/jbenet/go-cienv v0.1.0
 	github.com/jbenet/go-temp-err-catcher v0.0.0-20150120210811-aac704a3f4f2
 	github.com/jbenet/goprocess v0.1.3
-	github.com/joeqian10/neo-gogogo v0.0.0-20200313035100-69c0def2dfc4 // indirect
 	github.com/libp2p/go-buffer-pool v0.0.2
 	github.com/libp2p/go-conn-security-multistream v0.1.0
 	github.com/libp2p/go-eventbus v0.1.0
@@ -55,6 +54,7 @@ require (
 	github.com/libp2p/go-tcp-transport v0.1.1
 	github.com/mattn/go-colorable v0.1.4 // indirect
 	github.com/mattn/go-isatty v0.0.10 // indirect
+	github.com/minio/sha256-simd v0.1.1
 	github.com/mr-tron/base58 v1.1.3
 	github.com/multiformats/go-base32 v0.0.3
 	github.com/multiformats/go-multiaddr v0.2.0
