@@ -77,19 +77,19 @@ Initialize ArchonDHT
 
 `func (a *ArchonDHTs) GetArchonSPProfilesForMarketplace(permissionLayerID permLayer.PermissionLayerID) (c []RegisteredSp, e error)`
 
-// TODO
+// TODO EXPLANATION
 
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/get_archonsps_for_m.md)
 
 `func (a ArchonDHTs) Stored(key string, versionData *permLayer.VersionData) error`
 
-// TODO
+// TODO EXPLANATION
 
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/stored.md)
 
 `func (a *ArchonDHTs) GetUrlsOfNodesHoldingKeysFromAllLayers(keys []string, timeoutInSeconds time.Duration) (PermissionLayer2UrlArray, error)`
 
-// TODO
+// TODO EXPLANATION
 
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/geturls_ofnodes_holding.md)
 
@@ -106,6 +106,8 @@ Initialize ArchonDHT
  - [s/Kademlia](https://www.researchgate.net/publication/4319659_SKademlia_A_practicable_approach_towards_secure_key-based_routing)
 
  - [libp2p](https://github.com/libp2p/go-libp2p)
+
+ - [archoncloud-go](https://github.com/archoncloud/archoncloud-go)
 
  - [archoncloud-ethereum](https://github.com/archoncloud/archoncloud-ethereum)
 
