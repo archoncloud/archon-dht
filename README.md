@@ -48,6 +48,23 @@ We will see below which API's each of the players call in order to participate i
 
 ### 3. Initialization
 
+Set the logging level
+
+```
+  common.InitLogging(common.DefaultToExecutable("testingLoggingFolder/logging.log"))
+  common.SetLoggingLevelFromName("debug")
+```
+
+Initialize ArchonDHT 
+
+```
+  aDht, err := dht.Init(configArray, basePort);
+  // see example for explicit configArray construction
+  if err != nil {
+    fmt.Println("debug aDht err ", err)
+  }
+```
+[example](https://github.com/archoncloud/archon-dht/examples/initialize.md)
 
 --------------------------------------------------------------------
 
