@@ -22,6 +22,9 @@ import (
 
   	archonEthAbi.SetRpcUrl([]string{"https://goerli.infura.io/v3/9ca2c17c532a09ca2c17c532a0c532a0"}) // example fake rpc url
 	
+	// note: the nodeID of this SP must be registered with the 
+	// Archon Ethereum Smart Contract as an SP in order to connect
+	// to this subnet
 	eth := new(dhtLayers.Ethereum);
 	ethConfigDHT := dht.DHTConnectionConfig{
 	    Seed: seed,
@@ -35,8 +38,11 @@ import (
 	    BootstrapPeers: []string{
 		"/ip4/18.220.115.81/tcp/9002/ipfs/QmNX6ASyukLch38D2Z1h4cMh39ATfqqDom1xJWv2YHc1eG"}}
     
-	  neo := new(dhtLayers.Neo)
-	  neoConfigDHT := dht.DHTConnectionConfig{
+	// note: the nodeID of this SP must be registered with the 
+	// Archon Neo Smart Contract as an SP in order to connect
+	// to this subnet
+	neo := new(dhtLayers.Neo)
+	neoConfigDHT := dht.DHTConnectionConfig{
 	    Seed: seed,
 	    Global: true,
 	    IAmBootstrap: false,
@@ -48,7 +54,6 @@ import (
 	    BootstrapPeers: []string{
 		"/ip4/18.220.115.81/tcp/9003/ipfs/QmNX6ASyukLch38D2Z1h4cMh39ATfqqDom1xJWv2YHc1eG"}}
   
- 
 	  nonPermissioned := new(dhtLayers.NonPermissioned)
 	  freeConfigDHT := dht.DHTConnectionConfig{
 	    Seed: seed,
@@ -65,7 +70,7 @@ import (
 	  var configArray []dht.DHTConnectionConfig
 	  configArray = append(configArray, ethConfigDHT)
 	  configArray = append(configArray, neoConfigDHT)
-	  configArray = append(configArray, freeConfigDHT)
+	  configArray = append(configArray, freeConfigDHT) // necessary otherwise init throws
 
 	  aDht, err := dht.Init(configArray, basePort)
 	  if err != nil {
