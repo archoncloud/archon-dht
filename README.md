@@ -58,7 +58,7 @@ Set the logging level
 Initialize ArchonDHT 
 
 ```
-  aDht, err := dht.Init(configArray, basePort);
+  aDht, err := archon.Init(configArray, basePort);
   // see example for explicit configArray construction
   if err != nil {
     fmt.Println("debug aDht err ", err)
@@ -69,6 +69,24 @@ Initialize ArchonDHT
 --------------------------------------------------------------------
 
 ### 4. APIs 
+
+`func (a *ArchonDHTs) GetArchonSPProfilesForMarketplace(permissionLayerID permLayer.PermissionLayerID) (c []RegisteredSp, e error)`
+
+// TODO
+
+[example](https://github.com/archoncloud/archon-dht/blob/master/examples/get_archonsps_for_m.md)
+
+`func (a ArchonDHTs) Stored(key string, versionData *permLayer.VersionData) error`
+
+// TODO
+
+[example](https://github.com/archoncloud/archon-dht/blob/master/examples/stored.md)
+
+`func (a *ArchonDHTs) GetUrlsOfNodesHoldingKeysFromAllLayers(keys []string, timeoutInSeconds time.Duration) (PermissionLayer2UrlArray, error)`
+
+// TODO
+
+[example](https://github.com/archoncloud/archon-dht/blob/master/examples/geturls_ofnodes_holding.md)
 
 --------------------------------------------------------------------
 
