@@ -64,7 +64,7 @@ Initialize ArchonDHT
     fmt.Println("debug aDht err ", err)
   }
 ```
-[example](https://github.com/archoncloud/archon-dht/examples/initialize.md)
+[example](https://github.com/archoncloud/archon-dht/blob/master/examples/initialize.md)
 
 --------------------------------------------------------------------
 
