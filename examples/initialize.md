@@ -17,8 +17,10 @@ import (
 	JP := "JP" // example Japan
 	countryCode := gountries.Codes{Alpha2: JP}
   	basePort := int(9000) // example
-	// note: be sure to setup router (NAT Port Forwarding) to allow ports 9000 to 9005 to be accessible from outside your LAN
-	myUploadUrl := "http://myExampleSPUploadUrl.com/uploadEndpoint" // example
+	// note: be sure to setup router (NAT Port Forwarding) to allow 
+	// ports 9000 to 9005 to be accessible from outside your LAN
+	myUploadUrl := "http://myExampleSPUploadUrl.com/uploadEndpoint" 
+	// example
 
   	archonEthAbi.SetRpcUrl([]string{"https://goerli.infura.io/v3/9ca2c17c532a09ca2c17c532a0c532a0"}) // example fake rpc url
 	
@@ -70,7 +72,8 @@ import (
 	  var configArray []dht.DHTConnectionConfig
 	  configArray = append(configArray, ethConfigDHT)
 	  configArray = append(configArray, neoConfigDHT)
-	  configArray = append(configArray, freeConfigDHT) // necessary otherwise init throws
+	  configArray = append(configArray, freeConfigDHT) 
+	  // NonPermissioned config is necessary otherwise init throws
 
 	  aDht, err := dht.Init(configArray, basePort)
 	  if err != nil {
