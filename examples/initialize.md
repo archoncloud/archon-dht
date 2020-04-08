@@ -22,7 +22,8 @@ import (
 	myUploadUrl := "http://myExampleSPUploadUrl.com/uploadEndpoint" 
 	// example
 
-  	archonEthAbi.SetRpcUrl([]string{"https://goerli.infura.io/v3/9ca2c17c532a09ca2c17c532a0c532a0"}) // example fake rpc url
+  	archonEthAbi.SetRpcUrl([]string{"https://goerli.infura.io/v3/9ca2c17c532a09ca2c17c532a0c532a0"}) 
+	// example fake rpc url
 	
 	// note: the nodeID of this SP must be registered with the 
 	// Archon Ethereum Smart Contract as an SP in order to connect
