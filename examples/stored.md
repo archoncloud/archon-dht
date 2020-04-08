@@ -1,4 +1,4 @@
-# Example: `func (a ArchonDHTs) Stored(key string, versionData *permLayer.VersionData) error`
+# Example: Stored
 
 ```
 // TODO
