@@ -12,7 +12,9 @@ Documentation in progress.
 
   4. APIs
 
-  5. Further reading 
+  5. Notable Background Processes 
+
+  6. Further reading 
 
 --------------------------------------------------------------------
 
@@ -64,6 +66,9 @@ Initialize ArchonDHT
     fmt.Println("debug aDht err ", err)
   }
 ```
+
+// TODO EXPLANATION OF WHAT INITIALIZATION DOES
+
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/initialize.md)
 
 --------------------------------------------------------------------
@@ -90,7 +95,11 @@ Initialize ArchonDHT
 
 --------------------------------------------------------------------
 
-### 5. Further reading 
+### 5. Notable Background Processes
+
+--------------------------------------------------------------------
+
+### 6. Further reading 
 
  - [Kademlia](http://www.scs.stanford.edu/~dm/home/papers/kpos.pdf)
 
