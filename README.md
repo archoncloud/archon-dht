@@ -23,7 +23,7 @@ Documentation in progress.
 
 ### 1. Overview
 
-This module provides the peer-to-peer networking stack for the Archon Cloud (AC). This networking stack consists of an extension of libp2p's implementation of [Kademlia](http://www.scs.stanford.edu/~dm/home/papers/kpos.pdf) to support Blockchain permissioned subnets enabling more efficient and secure decentralized file storage. While currently this module directly supports [Ethereum](https://github.com/archoncloud/archoncloud-ethereum) and [Neo](https://github.com/archoncloud/archoncloud-go/blockchainAPI/neo) permission layers, the extension is generic so that permission layers hosted by other blockchains can be easily integrated.
+This module provides the peer-to-peer networking stack for the Archon Cloud (AC). This networking stack consists of an extension of libp2p's implementation of [Kademlia](http://www.scs.stanford.edu/~dm/home/papers/kpos.pdf) to support Blockchain permissioned subnets enabling more efficient and secure decentralized file storage. While currently this module directly supports [Ethereum](https://github.com/archoncloud/archoncloud-ethereum) and [Neo](https://github.com/archoncloud/archoncloud-go/blockchainAPI/neo) permission layers, the extension is generic so that permission layers hosted by other blockchains can be easily integrated. This module was purpose-built for the [official archoncloud-go client](https://github.com/archoncloud/archoncloud-go), but is suitable to be used in other client implementations adhering to the Archon Protocol.
 
 --------------------------------------------------------------------
 
@@ -69,27 +69,7 @@ Initialize ArchonDHT
   }
 ```
 
-// TODO EXPLANATION OF WHAT INITIALIZATION DOES
-	
-	// inits layers
-	
-	// set dht id
-		
-		// checks if self is registered w permission_layer
-		// makeRoutedHost
-		//   host: setting up identity, transport layers, (archon)security, multiplexers
-		// setup dht datastore
-		// set (archon)validator
-		// bind host and datastore to kademlia routing
-	
-		// validates bootstrap peers
-		// connects to valid bootstrap peers
-		// initializes polling for selfWalk etc
-
-	// inits polling daemons
-		// pollUpdateSPProfileCache
-		// self reporting network loggin
-
+The Init function takes in an array of appropriately populated `DHTConnectionConfig`'s and a `basePort` to an appropriate range and returns the "ArchonDHTs" struct. This struct is the platform from where api calls to archon-dht are made. The `ArchonDHTs` struct consists of "Layers" of `ArchonDHT`'s indexed by `PermissionLayerID`. First a nodeID is established for the node. For each entry of the `configArray`, Init attempts to initialize the corresponding `ArchonDHT` layer. The initialization of each layer consists of many steps, and the main ones are stated here. The nodeID is checked agains the respective permissionLayer to ensure it is in good standing. The networking transport layers, multiplexers, security, routing validator, datastore, and Kademlia routing are initialized and bound to the host. Of these objects, many have extra logic built in specific to the Archon Protocol. The list of bootstrap peers are also checked against the permissionLayer to be in good standing, and those who are not are filtered out. The host bootstraps to the validated peers and initializes processes specific to Kademlia, namely bucket-refreshes etc. Once all `ArchonDHT` layers are initialized, the parent `ArchonDHTs` starts background processes such as polling to update the SP profile cache, and (optional) network logging.
 
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/initialize.md)
 
@@ -141,7 +121,7 @@ Initialize ArchonDHT
 
  - [archoncloud-ethereum](https://github.com/archoncloud/archoncloud-ethereum)
 
- - [archoncloud-neo](https://github.com/archoncloud/archoncloud-go/blockchainAPI/neo)
+ - [archoncloud-neo](https://github.com/archoncloud/archoncloud-go/tree/master/blockchainAPI/neo)
 
  - [archoncloud-contracts](https://github.com/archoncloud/archoncloud-contracts)
 
