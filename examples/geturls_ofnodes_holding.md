@@ -3,10 +3,11 @@
 ```
 import (
 	"fmt"
+	"time"
 
 	permLayer "github.com/archoncloud/archon-dht/permission_layer"
 	
-// ...
+	// ...
 )
 
 	// using initialized "aDht". see initialization
@@ -36,7 +37,7 @@ import (
 							   shardFileSuffix) 
 		shards = append(shards, shardPath)
 	}
-	
+	timeout := 8*time.Second	
 	urls, err := aDht.GetUrlsOfNodesHoldingKeysFromAllLayers(shards, timeout)
 	if err != nil {
 		// handle
