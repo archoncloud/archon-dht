@@ -101,7 +101,13 @@ In order for a downloader D to retrieve file u from AC, D needs a list of urls, 
 
 ### 5. On Permissioning and Membership 
 
-// TODO
+As a base case, any storage provider bootstraps and participates in AC by way of the non-permissioned network. Recall, a storage provider's role in the AC is as conduit to the needs of uploaders and downloaders. Given this role, it would behoove the storage provider to optimize it's operations as a member of Archon Cloud to provide premium service. Operating within one or many permission layers of AC is a way for storage providers to provide increasingly premium service. The permission layers permit payment to sp's to be made in native cryptocurrencies of each respective permission layer, increase lookup speeds by searching withing networks with reduced diameter, and ensure integrity of relayed information through accountability enforced by overlay credentials agains smart contract logic.
+
+A necessary condition of a storage provider S bootstrapping to a permissioned subnet is that it is registered and in good standing with the layer's smart contract. Also, a necessary condition of an outside connection being made to a node in a permission layer is that the connector is registered and in good standing with the layer's smart contract. This means that if S belongs to a permission layer, S will only interact within that layer with nodes maintaining similar integrity.
+
+When an S belongs to a permission layer, it is "known" in that overlay by appearing in many routing tables of members of that layer. Each one of the members who "know of" S, maintain an updated cached profile for S and serve that profile to any entity wishing to run a marketplace instance.
+
+A permission layer, by design, upholds a certain level of accountability for it's members, so data retrieved in the layer can be trusted to be of premium value compared to the non-permissioned layer.
 
 --------------------------------------------------------------------
 
