@@ -87,13 +87,13 @@ Uploads are routed in AC by local marketplace instances matching upload to Stora
 
 `func (a ArchonDHTs) Stored(key string, versionData *permLayer.VersionData) error`
 
-When a storage provider is hosting a shard (file), S announces to AC that is hosting the file by calling "Stored" on the key (shardPath) with the versionData associated with the shard (see Versioning in ArchonCloud)
+When a storage provider is hosting a shard (file), S announces to AC that is hosting the file by calling "Stored" on the key (shardPath) with the versionData associated with the shard (see Versioning in ArchonCloud). This call effectively puts the key:value pair StringToCID(shardPath):{spDownloadUrl, VersionData} into the dht so that later, an entity in AC can retrieve the shard called "shardPath" by calling a get function on the dht to retrieve value {spDownloadUrl, VersionData}.
 
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/stored.md)
 
 `func (a *ArchonDHTs) GetUrlsOfNodesHoldingKeysFromAllLayers(keys []string, timeoutInSeconds time.Duration) (PermissionLayer2UrlArray, error)`
 
-// TODO EXPLANATION
+In order for a downloader D to retrieve file u from AC, D needs a list of urls, each associated with a shard of sharded u. The downloader can run a "light-client" meaning it is not directly connected to the archon-dht, but the D can retrieve data from the archon-dht by calling upon some storage providers who would act as proxy for this request to the overlay. Any S in this set of storage providers would call this function on a list of "keys" constructed where each key is associated to a shard. This function returns a mapping from permissionLayer to list of urls, and the S returns the urls to the downloader D. Note: the urls returned from this function call are dependent on the AC Versioning system.
 
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/geturls_ofnodes_holding.md)
 
