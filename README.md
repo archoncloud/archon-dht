@@ -1,7 +1,5 @@
 # archon-dht
 
-Documentation in progress.
-
 ### Contents:
 
   1. Overview
@@ -113,7 +111,7 @@ A permission layer, by design, upholds a certain level of accountability for it'
 
 ### 6. Versioning in ArchonCloud 
 
-// TODO
+If many versions of a particular file are made to the Archon Cloud, the retrieval process of the file as a download has a preference for the latest version. Without this mechanism, repeated updates to a file stored in this manner would cause the download to fail. This is because the download client would be left to reconstruct the file from shards from different versions. See Archon Whitepaper or source code for exact implementation details.
 
 --------------------------------------------------------------------
 
