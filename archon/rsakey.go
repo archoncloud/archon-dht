@@ -20,7 +20,7 @@ var keyFilePath = struct {
 // Generate RSAKey generates a new RSA key based on config.Seed
 func GenerateRSAKey(seed int64) (crypto.PrivKey, error) {
 	var r io.Reader
-	if seed == 1 {
+	if seed == 0 {
 		r = rand.Reader
 	} else {
 		r = mrand.New(mrand.NewSource(seed))
