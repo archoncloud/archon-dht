@@ -14,9 +14,11 @@ Documentation in progress.
 
   5. On Permissioning and Membership 
 
-  6. Notable Background Processes 
+  6. Versioning in ArchonCloud 
+  
+  7. Notable Background Processes 
 
-  7. Further reading 
+  8. Further reading 
 
 --------------------------------------------------------------------
 
@@ -85,7 +87,7 @@ Uploads are routed in AC by local marketplace instances matching upload to Stora
 
 `func (a ArchonDHTs) Stored(key string, versionData *permLayer.VersionData) error`
 
-// TODO EXPLANATION
+When a storage provider is hosting a shard (file), S announces to AC that is hosting the file by calling "Stored" on the key (shardPath) with the versionData associated with the shard (see Versioning in ArchonCloud)
 
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/stored.md)
 
@@ -103,13 +105,19 @@ Uploads are routed in AC by local marketplace instances matching upload to Stora
 
 --------------------------------------------------------------------
 
-### 6. Notable Background Processes
+### 6. Versioning in ArchonCloud 
 
 // TODO
 
 --------------------------------------------------------------------
 
-### 7. Further reading 
+### 7. Notable Background Processes
+
+// TODO
+
+--------------------------------------------------------------------
+
+### 8. Further reading 
 
  - [Kademlia](http://www.scs.stanford.edu/~dm/home/papers/kpos.pdf)
 
