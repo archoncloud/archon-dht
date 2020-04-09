@@ -117,7 +117,7 @@ If many versions of a particular file are made to the Archon Cloud, the retrieva
 
 ### 7. Notable Background Processes
 
-// TODO
+Some notable background processes are the polling for update sp profile cache, (optional) network logging, and the native dht bucket-refreshing.
 
 --------------------------------------------------------------------
 
