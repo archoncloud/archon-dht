@@ -70,8 +70,11 @@ Initialize ArchonDHT
 ```
 
 // TODO EXPLANATION OF WHAT INITIALIZATION DOES
+	
 	// inits layers
+	
 	// set dht id
+		
 		// checks if self is registered w permission_layer
 		// makeRoutedHost
 		//   host: setting up identity, transport layers, (archon)security, multiplexers
