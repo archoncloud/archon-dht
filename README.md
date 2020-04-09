@@ -12,9 +12,11 @@ Documentation in progress.
 
   4. APIs
 
-  5. Notable Background Processes 
+  5. On Permissioning and Membership 
 
-  6. Further reading 
+  6. Notable Background Processes 
+
+  7. Further reading 
 
 --------------------------------------------------------------------
 
@@ -68,6 +70,23 @@ Initialize ArchonDHT
 ```
 
 // TODO EXPLANATION OF WHAT INITIALIZATION DOES
+	// inits layers
+	// set dht id
+		// checks if self is registered w permission_layer
+		// makeRoutedHost
+		//   host: setting up identity, transport layers, (archon)security, multiplexers
+		// setup dht datastore
+		// set (archon)validator
+		// bind host and datastore to kademlia routing
+	
+		// validates bootstrap peers
+		// connects to valid bootstrap peers
+		// initializes polling for selfWalk etc
+
+	// inits polling daemons
+		// pollUpdateSPProfileCache
+		// self reporting network loggin
+
 
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/initialize.md)
 
@@ -95,13 +114,19 @@ Initialize ArchonDHT
 
 --------------------------------------------------------------------
 
-### 5. Notable Background Processes
+### 5. On Permissioning and Membership 
 
 // TODO
 
 --------------------------------------------------------------------
 
-### 6. Further reading 
+### 6. Notable Background Processes
+
+// TODO
+
+--------------------------------------------------------------------
+
+### 7. Further reading 
 
  - [Kademlia](http://www.scs.stanford.edu/~dm/home/papers/kpos.pdf)
 
