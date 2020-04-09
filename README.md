@@ -79,7 +79,7 @@ The Init function takes in an array of appropriately populated `DHTConnectionCon
 
 `func (a *ArchonDHTs) GetArchonSPProfilesForMarketplace(permissionLayerID permLayer.PermissionLayerID) (c []RegisteredSp, e error)`
 
-// TODO EXPLANATION
+Uploads are routed in AC by local marketplace instances matching upload to Storage Providers. These marketplace instances can be hosted by the uploader itself, or a storage provider. Regardless of who is hosting the instance, the marketplace will need a collection of storage provider profiles that are competing for the upload. A courtesy that an S (storage provider) contributes to the AC is that they cache and serve sp profiles for these instances. Recall that a background process of `ArchonDHT` is to continually update its sp profile cache to capture the latest sps marketplace profiles. This function simply returns this cache.
 
 [example](https://github.com/archoncloud/archon-dht/blob/master/examples/get_archonsps_for_m.md)
 
