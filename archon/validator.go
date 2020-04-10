@@ -16,7 +16,8 @@ import (
 	permLayer "github.com/archoncloud/archon-dht/permission_layer"
 )
 
-// Validator is validates and orders by preference nodes in the dht
+// Validator validates and orders by preference nodes, or keys:value
+// pairs in the in the dht
 type ArchonValidator struct {
 	PermissionLayer permLayer.PermissionLayer
 }
