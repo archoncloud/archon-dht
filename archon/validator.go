@@ -55,11 +55,15 @@ func (c ArchonValidator) Validate(key string, value []byte) error {
 		// during routing.
 		// See readme or whitepaper for full explanation.
 		uploadUrls := new(UrlsStruct)
-		err = json.Unmarshal(value, uploadUrls)
+		err = json.Unmarshal(value, &uploadUrls)
 		if err != nil {
 			return record.ErrInvalidRecordType
 		}
-		ok, err := uploadUrls.PublicKey.Verify([]byte(uploadUrls.Urls), uploadUrls.Signature)
+		pub, err := crypto.PubKeyUnmarshallers[crypto.RSA](uploadUrls.PublicKey)
+		if err != nil {
+			return record.ErrInvalidRecordType
+		}
+		ok, err := pub.Verify([]byte(uploadUrls.Urls), uploadUrls.Signature)
 		if err != nil {
 			return record.ErrInvalidRecordType
 		}

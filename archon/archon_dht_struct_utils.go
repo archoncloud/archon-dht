@@ -208,13 +208,17 @@ func (d *ArchonDHT) putUrl(archonPrefix string, keyAsCid cid.Cid) error {
 		return err
 	}
 	pub := p.GetPublic()
+	bPub, err := pub.Raw()
+	if err != nil {
+		return err
+	}
 	sig, err := p.Sign([]byte(d.Config.Url))
 	if err != nil {
 		return err
 	}
 	var ULUs UrlsStruct = UrlsStruct{Urls: d.Config.Url,
 		Signature: sig,
-		PublicKey: pub}
+		PublicKey: bPub}
 	// the sig and pub are to prevent a malicious
 	// sp from overwriting the url of their peer in the dht
 	// This signature is checked by the verifier object
@@ -234,6 +238,10 @@ func (d *ArchonDHT) putUrlVersioned(archonPrefix string, keyAsCid cid.Cid, versi
 		return err
 	}
 	pub := p.GetPublic()
+	bPub, err := pub.Raw()
+	if err != nil {
+		return err
+	}
 	bVersionData, err := json.Marshal(versionData)
 	if err != nil {
 		return err
@@ -245,7 +253,7 @@ func (d *ArchonDHT) putUrlVersioned(archonPrefix string, keyAsCid cid.Cid, versi
 	var ULUs UrlsVersionedStruct = UrlsVersionedStruct{Urls: d.Config.Url,
 		Versioning: versionData,
 		Signature:  sig,
-		PublicKey:  pub}
+		PublicKey:  bPub}
 	// the sig and pub are a safety precaution similar to the
 	// one above. This is to ensure that the sp that calls
 	// "stored" on this data is held accountable by way of their
