@@ -234,8 +234,11 @@ func (d *ArchonDHT) putUrlVersioned(archonPrefix string, keyAsCid cid.Cid, versi
 		return err
 	}
 	pub := p.GetPublic()
-	sVersionData := json.Unmarshal(sVersionData)
-	sig, err := p.Sign([]byte(d.Config.Url + sVersionData))
+	bVersionData, err := json.Marshal(versionData)
+	if err != nil {
+		return err
+	}
+	sig, err := p.Sign([]byte(d.Config.Url + string(bVersionData)))
 	if err != nil {
 		return err
 	}
