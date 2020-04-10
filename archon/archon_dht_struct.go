@@ -54,6 +54,8 @@ func (a *ArchonDHTs) Init() {
 	a.Layers = make(PermissionLayer2ArchonDHT)
 }
 
+var SpFilenames = permLayer.SpFilenames
+
 // Used to build up ArchonDHTs. See Init(...) in init.go
 func (a *ArchonDHTs) AddLayer(permissionLayerId permLayer.PermissionLayerID, rh *rhost.RoutedHost, d *dht.IpfsDHT, c DHTConnectionConfig) {
 	archonDHT := new(ArchonDHT)
