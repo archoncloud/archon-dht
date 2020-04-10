@@ -17,6 +17,7 @@ import (
 	permLayer "github.com/archoncloud/archon-dht/permission_layer"
 	. "github.com/archoncloud/archoncloud-go/blockchainAPI/registered_sp"
 
+	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/libp2p/go-libp2p-core/peer"
 	rhost "github.com/libp2p/go-libp2p/p2p/host/routed"
 	mh "github.com/multiformats/go-multihash"
@@ -38,12 +39,16 @@ type ArchonDHTs struct {
 }
 
 type UrlsStruct struct {
-	Urls string `json:download_urls`
+	Urls      string        `json:download_urls`
+	Signature []byte        `json:signature`
+	PublicKey crypto.PubKey `json:public_key`
 }
 
 type UrlsVersionedStruct struct {
 	Urls       string                `json:download_urls`
 	Versioning permLayer.VersionData `json:versioning`
+	Signature  []byte                `json:signature`
+	PublicKey  crypto.PubKey         `json:public_key`
 }
 
 func (a *ArchonDHTs) Init() {

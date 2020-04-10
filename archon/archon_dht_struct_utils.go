@@ -212,9 +212,9 @@ func (d *ArchonDHT) putUrl(archonPrefix string, keyAsCid cid.Cid) error {
 	if err != nil {
 		return err
 	}
-	var ULUs UrlsStruct = UrlsStruct{Urls: d.Config.Url, 
-					Signature: sig, 
-					PublicKey: pub}
+	var ULUs UrlsStruct = UrlsStruct{Urls: d.Config.Url,
+		Signature: sig,
+		PublicKey: pub}
 	uploadUrls, err := json.Marshal(ULUs)
 	if err != nil {
 		return err
@@ -229,15 +229,15 @@ func (d *ArchonDHT) putUrlVersioned(archonPrefix string, keyAsCid cid.Cid, versi
 		return err
 	}
 	pub := p.GetPublic()
-	sVersionData := json.Unmarshal(sVersionData) 
+	sVersionData := json.Unmarshal(sVersionData)
 	sig, err := p.Sign([]byte(d.Config.Url + sVersionData))
 	if err != nil {
 		return err
 	}
-	var ULUs UrlsVersionedStruct = UrlsVersionedStruct{Urls: d.Config.Url, 
-						Versioning: versionData,
-						Signature: sig,
-						PublicKey: pub}
+	var ULUs UrlsVersionedStruct = UrlsVersionedStruct{Urls: d.Config.Url,
+		Versioning: versionData,
+		Signature:  sig,
+		PublicKey:  pub}
 	downloadUrlsVersioned, err := json.Marshal(ULUs)
 	if err != nil {
 		return err
