@@ -44,13 +44,34 @@ func (c ArchonValidator) Validate(key string, value []byte) error {
 			return fmt.Errorf("public key does not match storage key")
 		}
 		return nil
-	} else if ns == "archonurl" || ns == "archondl" {
+	} else if ns == "archonurl" {
 		_, err := cid.Decode(ccid)
 		if err != nil {
 			return record.ErrInvalidRecordType
-		} else {
-			return nil
 		}
+		// the sig and pub are to prevent a malicious
+		// sp from overwriting the url of their peer in the dht
+		// This signature is checked by the verifier object
+		// during routing.
+		// See readme or whitepaper for full explanation.
+		uploadUrls, err := json.Unmarshal(value)
+		if err != nil {
+			return record.ErrInvalidRecordType
+		}
+		ok, err := uploadUrls.PublicKey.Verify([]byte(uploadUrls.Url), uploadUrls.sig)
+		if err != nil {
+			return record.ErrInvalidRecordType
+		}
+		if !ok {
+			return record.ErrInvalidRecordType
+		}
+		return nil
+	} else if ns == "archondl" {
+		_, err := cid.Decode(ccid)
+		if err != nil {
+			return record.ErrInvalidRecordType
+		}
+		return nil
 	}
 	return record.ErrInvalidRecordType
 }

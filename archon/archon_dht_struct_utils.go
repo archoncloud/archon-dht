@@ -215,6 +215,11 @@ func (d *ArchonDHT) putUrl(archonPrefix string, keyAsCid cid.Cid) error {
 	var ULUs UrlsStruct = UrlsStruct{Urls: d.Config.Url,
 		Signature: sig,
 		PublicKey: pub}
+	// the sig and pub are to prevent a malicious
+	// sp from overwriting the url of their peer in the dht
+	// This signature is checked by the verifier object
+	// during routing.
+	// See readme or whitepaper for full explanation.
 	uploadUrls, err := json.Marshal(ULUs)
 	if err != nil {
 		return err
@@ -238,6 +243,14 @@ func (d *ArchonDHT) putUrlVersioned(archonPrefix string, keyAsCid cid.Cid, versi
 		Versioning: versionData,
 		Signature:  sig,
 		PublicKey:  pub}
+	// the sig and pub are a safety precaution similar to the
+	// one above. This is to ensure that the sp that calls
+	// "stored" on this data is held accountable by way of their
+	// signature. Later in the protocol, when the downloader
+	// obtains download from this info, the download receipt
+	// combined with this signature can be used as a proof of
+	// misconduct if the version or data have been tampered with.
+	// See readme or whitepaper for full explanation
 	downloadUrlsVersioned, err := json.Marshal(ULUs)
 	if err != nil {
 		return err
