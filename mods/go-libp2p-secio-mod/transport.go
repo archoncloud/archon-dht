@@ -35,7 +35,6 @@ func New(sk ci.PrivKey) (*Transport, error) {
 	}, nil
 }
 
-// EXAMPLE
 func NewNONSecureTransport(sk ci.PrivKey) (*Transport, error) {
 	id, err := peer.IDFromPrivateKey(sk)
 	if err != nil {

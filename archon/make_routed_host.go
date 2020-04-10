@@ -75,9 +75,7 @@ func makeRoutedHost(config DHTConnectionConfig, bootstrapPeers []peer.AddrInfo) 
 	}
 
 	ctx := context.Background()
-	// note: we are using archon specific modified libp2p libraries
 	basicHost, err := libp2p.New(ctx, opts...)
-	//basicHost, err := libp2p.NewPermissioned(ctx, config.PermissionLayer, opts...)
 	if err != nil {
 		return nil, nil, err
 	}
