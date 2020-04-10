@@ -45,7 +45,7 @@ func (c ArchonValidator) Validate(key string, value []byte) error {
 		}
 		return nil
 	} else if ns == "archonurl" {
-		_, err := cid.Decode(ccid)
+		peerID, err := cid.Decode(ccid)
 		if err != nil {
 			return record.ErrInvalidRecordType
 		}
@@ -68,6 +68,13 @@ func (c ArchonValidator) Validate(key string, value []byte) error {
 			return record.ErrInvalidRecordType
 		}
 		if !ok {
+			return record.ErrInvalidRecordType
+		}
+		pid, err := peer.IDFromPublicKey(pub)
+		if err != nil {
+			return record.ErrInvalidRecordType
+		}
+		if pid.Pretty() != peerID.String() {
 			return record.ErrInvalidRecordType
 		}
 		return nil
