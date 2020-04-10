@@ -203,7 +203,18 @@ func (a *ArchonDHT) updateUrls(connectedPeers []peer.ID) {
 // called by putValue
 func (d *ArchonDHT) putUrl(archonPrefix string, keyAsCid cid.Cid) error {
 	var archonUlKey string = archonPrefix + keyAsCid.String()
-	var ULUs UrlsStruct = UrlsStruct{Urls: d.Config.Url}
+	p, err := GetRSAKey(d.Config.Seed)
+	if err != nil {
+		return err
+	}
+	pub := p.GetPublic()
+	sig, err := p.Sign([]byte(d.Config.Url))
+	if err != nil {
+		return err
+	}
+	var ULUs UrlsStruct = UrlsStruct{Urls: d.Config.Url, 
+					Signature: sig, 
+					PublicKey: pub}
 	uploadUrls, err := json.Marshal(ULUs)
 	if err != nil {
 		return err
@@ -213,7 +224,20 @@ func (d *ArchonDHT) putUrl(archonPrefix string, keyAsCid cid.Cid) error {
 
 func (d *ArchonDHT) putUrlVersioned(archonPrefix string, keyAsCid cid.Cid, versionData permLayer.VersionData) error {
 	var archonUlKey string = archonPrefix + keyAsCid.String()
-	var ULUs UrlsVersionedStruct = UrlsVersionedStruct{Urls: d.Config.Url, Versioning: versionData}
+	p, err := GetRSAKey(d.Config.Seed)
+	if err != nil {
+		return err
+	}
+	pub := p.GetPublic()
+	sVersionData := json.Unmarshal(sVersionData) 
+	sig, err := p.Sign([]byte(d.Config.Url + sVersionData))
+	if err != nil {
+		return err
+	}
+	var ULUs UrlsVersionedStruct = UrlsVersionedStruct{Urls: d.Config.Url, 
+						Versioning: versionData,
+						Signature: sig,
+						PublicKey: pub}
 	downloadUrlsVersioned, err := json.Marshal(ULUs)
 	if err != nil {
 		return err
