@@ -98,7 +98,8 @@ func StringToCid(key string) (cid.Cid, error) {
 }
 
 // The returned collection of registeredSps are to populate a local marketplace
-// instance to optimally match an upload to a collection storage provider.
+// instance to optimally match an upload to a within a collection of
+// storage providers.
 func (a *ArchonDHTs) GetArchonSPProfilesForMarketplace(permissionLayerID permLayer.PermissionLayerID) (c []RegisteredSp, e error) {
 	common.LogDebug.Println("GetArchonSPProfilesForMarketplace ", permissionLayerID)
 	var ret []RegisteredSp
