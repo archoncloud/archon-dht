@@ -2,6 +2,7 @@ package archon_dht
 
 import (
 	"context"
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"sync"
@@ -212,7 +213,10 @@ func (d *ArchonDHT) putUrl(archonPrefix string, keyAsCid cid.Cid) error {
 	if err != nil {
 		return err
 	}
-	sig, err := p.Sign([]byte(d.Config.Url))
+	h := sha256.New()
+	h.Write([]byte(d.Config.Url))
+	hashed := h.Sum(nil)
+	sig, err := p.Sign(hashed)
 	if err != nil {
 		return err
 	}
@@ -246,7 +250,10 @@ func (d *ArchonDHT) putUrlVersioned(archonPrefix string, keyAsCid cid.Cid, versi
 	if err != nil {
 		return err
 	}
-	sig, err := p.Sign([]byte(d.Config.Url + string(bVersionData)))
+	h := sha256.New()
+	h.Write([]byte(d.Config.Url + string(bVersionData)))
+	hashed := h.Sum(nil)
+	sig, err := p.Sign(hashed)
 	if err != nil {
 		return err
 	}

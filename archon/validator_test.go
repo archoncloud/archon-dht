@@ -1,6 +1,7 @@
 package archon_dht
 
 import (
+	"crypto/sha256"
 	"encoding/json"
 	"testing"
 
@@ -9,10 +10,9 @@ import (
 	"github.com/libp2p/go-libp2p-core/peer"
 )
 
-
 func TestUrlValidation(t *testing.T) {
-	
-	seed := int64(123)	
+
+	seed := int64(123)
 	p, err := GetRSAKey(seed)
 	if err != nil {
 		assert.Equal(t, 1, 0, err.Error())
@@ -28,7 +28,10 @@ func TestUrlValidation(t *testing.T) {
 	if err != nil {
 		assert.Equal(t, 1, 0, err.Error())
 	}
-	sig, err := p.Sign([]byte(exampleUrl))
+	h := sha256.New()
+	h.Write([]byte(exampleUrl))
+	hashed := h.Sum(nil)
+	sig, err := p.Sign(hashed)
 	if err != nil {
 		assert.Equal(t, 1, 0, err.Error())
 	}
@@ -48,4 +51,4 @@ func TestUrlValidation(t *testing.T) {
 		assert.Equal(t, 1, 1, "/archonurl/ validates")
 	}
 
-}	
+}

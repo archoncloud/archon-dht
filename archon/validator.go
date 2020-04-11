@@ -2,6 +2,7 @@ package archon_dht
 
 import (
 	"bytes"
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 
@@ -63,8 +64,12 @@ func (c ArchonValidator) Validate(key string, value []byte) error {
 		if err != nil {
 			return record.ErrInvalidRecordType
 		}
-		ok, err := pub.Verify([]byte(uploadUrls.Urls), uploadUrls.Signature)
+		h := sha256.New()
+		h.Write([]byte(uploadUrls.Urls))
+		hashed := h.Sum(nil)
+		ok, err := pub.Verify(hashed, uploadUrls.Signature)
 		if err != nil {
+			fmt.Println("debug 1", err)
 			return record.ErrInvalidRecordType
 		}
 		if !ok {
