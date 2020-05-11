@@ -29,7 +29,8 @@ type WrappedLog struct {
 
 func PollReportConnectionsToNetwork(host rhost.RoutedHost, config DHTConnectionConfig, interval time.Duration) {
 	clUrl := "dhtlogger.archon.cloud"
-	clUrl = "https://" + clUrl + "/centralLogging"
+	//clUrl = "https://" + clUrl + "/centralLogging"
+	clUrl = "http://" + clUrl + "/centralLogging"
 	report := new(ReportConnectionsLog)
 	report.NodeId = host.ID()
 	report.PermLayerID = config.PermissionLayer.ID()
